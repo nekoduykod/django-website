@@ -1,6 +1,12 @@
 from django.db import models
 
 
+# class Location(models.Model):
+#     country = models.CharField()
+#     iso_code = models.CharField(max_length=3)
+# TODO normalization
+
+ 
 class Projects(models.Model):
     project_id = models.CharField(max_length=255)
     title = models.CharField(max_length=255)

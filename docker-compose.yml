@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  
-  my-django-app:
+
+  web:
     build:
-      context: .
+      context: ./dockerfiles/django_docker
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
@@ -31,6 +31,7 @@ services:
       - POSTGRES_PASSWORD=${PG_PASS}
       - POSTGRES_DB=${PG_DB_NAME}
 
+
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4:latest
@@ -42,6 +43,7 @@ services:
     depends_on:  
       - postgres
 
+
   redis:
     restart: always
     image: redis:latest
@@ -50,17 +52,17 @@ services:
     # volumes:
     #   - redisdata:/data
   
-  airflow:
-    container_name: airflow
-    image: apache/airflow:2.2.3   
-    restart: always 
-    environment:
-      - AIRFLOW_DATABASE_URL=postgresql+psycopg2://${PG_USER}:${PG_PASS}@projects:5432/${PG_DB_NAME}
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-    volumes:
-      - ./src/dags:/usr/local/airflow/dags
+  
+  celery:
+    build:
+      context: ./dockerfiles/celery_docker
+      dockerfile: Dockerfile
     depends_on:
-      - my-django-app
+      - web
+      - redis # або rabbitmq
+    env_file:
+      - .env
+    commands: celery -A proj worker -l INFO && celery-beat proj
 
 # Optionally, define network configurations
 # networks:

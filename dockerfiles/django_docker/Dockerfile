@@ -1,19 +1,19 @@
-FROM python:3.10
+FROM python:3.11
 
-# Set environment variables
+# set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Встановлюємо the working directory in the container
+# встановлюємо the working directory in the container
 WORKDIR /src
 
 # contents of the src/ directory into the container
-COPY src/ .
+COPY ./src/ /src/
 
 # .env file into the container
 COPY .env /src
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r django_requirements.txt
 
 #  additional setup steps, optionally
 # RUN addgroup --system django && adduser --system django --ingroup django
