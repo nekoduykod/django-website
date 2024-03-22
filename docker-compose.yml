@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  
+  my-django-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+    command: python manage.py runserver 0.0.0.0:8000
+
+
+  postgres:
+    container_name: postgresql_db
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_DB=${PG_DB_NAME}
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - 5050:80
+    depends_on:  
+      - postgres
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    # volumes:
+    #   - redisdata:/data
+  
+  airflow:
+    container_name: airflow
+    image: apache/airflow:2.2.3   
+    restart: always 
+    environment:
+      - AIRFLOW_DATABASE_URL=postgresql+psycopg2://${PG_USER}:${PG_PASS}@projects:5432/${PG_DB_NAME}
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    volumes:
+      - ./src/dags:/usr/local/airflow/dags
+    depends_on:
+      - my-django-app
+
+# Optionally, define network configurations
+# networks:
+#   my_network:
+#     driver: bridge

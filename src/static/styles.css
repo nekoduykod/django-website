@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+body {
+  margin:0;
+  font: 600 18px 'Source Sans Pro', sans-serif;
+  letter-spacing: 0.64px;
+  color: #585d74;
+}
+.topnav {
+  background-color:#37a8dc;
+  color:#ffffff;
+  padding:10px;
+}
+.topnav a:link, .topnav a:visited {
+  text-decoration: none;
+  color: #ffffff; 
+}
+.topnav a:hover, .topnav a:active {
+  text-decoration: underline;
+}
+
+
+.main, .main h1 {
+  text-align:center;
+  color:#0f0f10;
+}
+
+
+.table-body {
+  background-color: #f9f9f9;
+}
+
+.table-body tr:nth-child(even) {
+  background-color: #e5f1fb;
+}
+
+.table-body tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table-body tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-body tr:last-child {
+  border-bottom: none;
+}
