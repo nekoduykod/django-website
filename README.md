@@ -40,10 +40,10 @@ docker-compose down // if to stop, or via Docker Desktop UI
 
 # Some pictures
 
-<img src='1scraped_projects_django.jpg' />
+<img src="img/1scraped_projects_django.jpg" />
 
-<img src='2pagination.jpg' />
+<img src="img/2pagination.jpg" />
 
-<img src='3redis_cache.jpg' />
+<img src="img/3redis_cache.jpg" />
 
-<img src='4source_scraped.jpg' />
+<img src="img/4source_scraped.jpg" />
