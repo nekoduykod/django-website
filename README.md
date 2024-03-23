@@ -32,11 +32,11 @@ Open https://localhost:8000/projects
 # Run through Docker
 git clone https://github.com/nekoduykod/django_website_scrape
 
-create your .env from an example 
+1) create your .env from an example
 
-docker-compose up --build   // If detached mode, add -d flag
+2) docker-compose up --build   // If detached mode, add -d flag
 
-docker-compose down // if to stop, or via Docker Desktop UI
+3) docker-compose down // if to stop, or via Docker Desktop UI
 
 # Some pictures
 
