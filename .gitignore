@@ -5,7 +5,5 @@ db.sqlite3
 __pycache__
 
 css/
-img/
-js/
 
 migrations/

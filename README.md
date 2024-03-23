@@ -22,7 +22,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 2) create your .env from an example 
-run python src\myapp\services\ibrd_scrape_to_postgres.py
+run python src\scrape_to_postgres.py
 
 3) download Redis. Open redis-cli.exe. PING. redis-server
 
@@ -37,3 +37,13 @@ create your .env from an example
 docker-compose up --build   // If detached mode, add -d flag
 
 docker-compose down // if to stop, or via Docker Desktop UI
+
+# Some pictures
+
+<img src='1scraped_projects_django.jpg' />
+
+<img src='2pagination.jpg' />
+
+<img src='3redis_cache.jpg' />
+
+<img src='4source_scraped.jpg' />
