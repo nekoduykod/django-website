@@ -1,4 +1,13 @@
+import os
+import django
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mydjango.settings")
+django.setup()
+
+
 import requests
+
 from myapp.models import Projects
 
 
