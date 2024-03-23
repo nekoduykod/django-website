@@ -17,19 +17,22 @@ API endpoints must be cached with redis. Use docker for containerizing an applic
 # Run locally
 git clone https://github.com/nekoduykod/django_website_scrape
 
-python -m venv venv
+1) python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 
-// change src/mydjango/settings.py DATABASES
-// run python src\myapp\services\ibrd_scrape_to_postgres.py
+2) create your .env from an example 
+run python src\myapp\services\ibrd_scrape_to_postgres.py
 
-// start the server
-py manage.py runserver
+3) download Redis. Open redis-cli.exe. PING. redis-server
+
+4) py manage.py runserver
 Open https://localhost:8000/projects
 
 # Run through Docker
 git clone https://github.com/nekoduykod/django_website_scrape
+
+create your .env from an example 
 
 docker-compose up --build   // If detached mode, add -d flag
 
