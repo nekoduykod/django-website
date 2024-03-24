@@ -1,6 +1,6 @@
 from celery import shared_task
 
-from scrape_to_postgres import scrape_ibrd
+from src.scrape_to_postgres import scrape_ibrd
 
 
 @shared_task
