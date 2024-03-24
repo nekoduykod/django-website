@@ -64,7 +64,7 @@ services:
       - redis # або rabbitmq
     env_file:
       - .env
-    commands: celery -A proj worker -l INFO && celery-beat proj
+    command: celery -A proj worker -l INFO && celery-beat proj
 
 # Optionally, define network configurations
 # networks:
